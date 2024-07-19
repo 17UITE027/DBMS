@@ -1,0 +1,71 @@
+SQL> select * from student27;
+
+ROLL_NO NAME MARK1 MARK2 MARK3 TOTAL
+
+---------- -------------------- ---------- ---------- ---------- ----------
+
+101 Sona 100 98 94 292
+
+102 Rathi 98 99 100 297
+
+103 Mala 98 99 97 294
+
+104 RathiSona 95 96 98 289
+
+105 Yogarani 98 97 96 291
+
+SQL> select name from student27 where name like 'R%';
+
+NAME
+
+--------------------
+
+Rathi
+
+RathiSona
+
+SQL> select name from student27 where name like '%i';
+
+NAME
+
+--------------------
+
+Rathi
+
+Yogarani
+
+SQL> select name from student27 where name like '%i%';
+
+NAME
+
+--------------------
+
+Rathi
+
+RathiSona
+
+Yogarani
+
+SQL> select min(mark2) from student27;
+
+MIN(MARK2)
+
+----------
+
+96
+
+SQL> select max(mark2) from student27;
+
+MAX(MARK2)
+
+----------
+
+99
+
+SQL> select avg(mark2) from student27;
+
+AVG(MARK2)
+
+----------
+
+97.8
