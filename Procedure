@@ -1,0 +1,93 @@
+SQL> create procedure p6 as cursor c6 is
+  2  (select * from  student27 where city='Chennai');
+  3  z c6%rowtype;
+  4  begin
+  5     open c6;
+  6     fetch c6 into z;
+  7     dbms_output.put_line('ID'||'   '||'Name'||' '||'City');
+  8     while c6%found
+  9     loop
+ 10             dbms_output.put_line(z.stu_id||'   '||z.stu_name||' '||z.city);
+ 11             fetch c6 into z;
+ 12     end loop;
+ 13     close c6;
+ 14  end;
+ 15  /
+
+Procedure created.
+
+SQL> begin
+  2  p6;
+  3  end;
+  4  /
+ID   Name City
+102   Mala Chennai
+105   Ramesh Chennai
+106   Ramesh Chennai
+
+PL/SQL procedure successfully completed.
+SQL> create or replace procedure p27 as cursor c27 is
+  2  (select gui_id,count(pro_id) as Number_of_project from pro_det group by(gui
+_id));
+  3  t c27%rowtype;
+  4  begin
+  5     open c27;
+  6     fetch c27 into t;
+  7     dbms_output.put_line('Guide_ID'||'   '||'Number of projects');
+  8     while c27%found
+  9     loop
+ 10             dbms_output.put_line(t.gui_id||'   '||t.Number_of_project);
+ 11             fetch c27 into t;
+ 12     end loop;
+ 13     close c27;
+ 14  end;
+ 15  /
+
+Procedure created.
+
+SQL> begin
+  2  p27;
+  3  end;
+  4  /
+Guide_ID   Number of projects
+1   2
+2   1
+4   1
+5   1
+3   1
+
+PL/SQL procedure successfully completed.
+
+
+
+SQL> create or replace procedure p27 as cursor c27 is
+  2  (select stu_name,city from student27 where stu_id in(select stu_id from pro
+_det where pro_id=1 or pro_id=2));
+  3  z c27%rowtype;
+  4  begin
+  5     open c27;
+  6     fetch c27 into z;
+  7     dbms_output.put_line('Name'||'   '||'City');
+  8     while c27%found
+  9     loop
+ 10             dbms_output.put_line(z.stu_name||'   '||z.city);
+ 11             fetch c27 into z;
+ 12     end loop;
+ 13     close c27;
+ 14  end;
+ 15  /
+
+Procedure created.
+
+
+SQL> begin
+  2  p27;
+  3  end;
+  4  /
+Name   City
+Sona   Virudhunagar
+Rathi   MAdurai
+
+PL/SQL procedure successfully completed.
+
+SQL>
