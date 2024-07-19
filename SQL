@@ -1,0 +1,132 @@
+SQL*Plus: Release 11.2.0.2.0 Production on Mon Dec 24 12:16:40 2018
+
+Copyright (c) 1982, 2010, Oracle. All rights reserved.
+
+SQL> connect itstudent
+
+Enter password:
+
+Connected.
+SQL> create table student
+
+2 (
+
+3 name varchar(20),
+
+4 age number(3)
+
+5 );
+
+Table created.
+
+SQL> desc student
+
+Name Null? Type
+
+----------------------------------------- -------- ----------------------------
+
+NAME VARCHAR2(20)
+
+AGE NUMBER(3)
+
+SQL> insert into student values('Sona',19);
+
+1 row created.
+
+SQL> select * from student
+
+2 ;
+
+NAME AGE
+
+-------------------- ----------
+
+Sona 19
+
+SQL> alter table student add roll_no number(3);
+
+Table altered.
+
+SQL> desc student
+
+Name Null? Type
+
+----------------------------------------- -------- ----------------------------
+
+NAME VARCHAR2(20)
+
+AGE NUMBER(3)
+
+ROLL_NO NUMBER(3)
+
+SQL> alter table student drop column age;
+
+Table altered.
+
+SQL> desc student
+
+Name Null? Type
+
+----------------------------------------- -------- ----------------------------
+
+NAME VARCHAR2(20)
+
+ROLL_NO NUMBER(3)
+
+SQL> alter table student modify roll_no number(2);
+
+Table altered.
+
+SQL> desc student
+
+Name Null? Type
+
+----------------------------------------- -------- ----------------------------
+
+NAME VARCHAR2(20)
+
+ROLL_NO NUMBER(2)
+
+SQL> commit;
+
+Commit complete.
+
+SQL> alter table student rename to stu
+
+2 ;
+
+Table altered.
+
+SQL> desc stu;
+
+Name Null? Type
+SQL> update stu set DOB='9/october/1999'where name='Sona';
+
+1 row updated.
+
+SQL> select *from stu;
+
+NAME ROLL_NO DOB
+
+-------------------- ---------- ---------
+
+Sona 09-OCT-99
+
+SQL> insert into stu values('Rathi',2,'9/October/1999');
+
+1 row created.
+
+SQL> select *from stu;
+
+NAME ROLL_NO DOB
+
+-------------------- ---------- ---------
+
+Sona 09-OCT-99
+
+Rathi 2 09-O
+----------------------------------------- -------- ----------------------------
+
+NAME VARCHAR2(20)
+
+ROLL_NO NUMBER(2)
